@@ -48,9 +48,11 @@ public class TaskAdapter extends BaseAdapter {
 
         //тест задачи
         TextView taskTextView = (TextView) convertView.findViewById(R.id.taskTextView);
-        taskTextView.setBackgroundColor(task.getColor());
-        taskTextView.getBackground().setAlpha(80);
+        //taskTextView.setBackgroundColor(task.getColor());
+        //taskTextView.getBackground().setAlpha(80);
 
+        convertView.setBackgroundColor(task.getColor());//красит само поле
+        convertView.getBackground().setAlpha(50);
         taskTextView.setText(task.getText());
         return convertView;
 
@@ -59,3 +61,4 @@ public class TaskAdapter extends BaseAdapter {
         return ((Task)getItem(position));
     }
 }
+//сортировать массив а затем вызвать метод адаптера setDataInvalidated

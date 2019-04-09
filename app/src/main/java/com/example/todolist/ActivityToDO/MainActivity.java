@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.todolist.JavaToDO.Task;
 import com.example.todolist.JavaToDO.TaskAdapter;
 import com.example.todolist.R;
 
@@ -28,6 +30,19 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         ListView lvMain = (ListView) findViewById(R.id.lvItems); //находим список
         lvMain.setAdapter(taskAdapter); //присваиваем адаптер списку
     }
+
+    public void onCheckboxClicked(View view){
+        // Получаем флажок
+        CheckBox checkBox = (CheckBox) view;
+
+        // Получаем, отмечен ли данный флажок
+        boolean checked = checkBox.isChecked();
+
+        //удалить задачу у которой отмечен checkBox
+        //получить координаты задачи
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){ //метод активити который задает три точки
         getMenuInflater().inflate(R.menu.menu,menu);

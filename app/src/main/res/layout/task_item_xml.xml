@@ -3,13 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <CheckBox
+        android:id="@+id/checkBoxColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/MyCheckBox"
+        android:onClick="onCheckboxClicked"
+        />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/taskTextView"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textColor="#1e90ff"
         />
 

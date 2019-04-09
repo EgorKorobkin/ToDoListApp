@@ -15,5 +15,4 @@
         android:id="@+id/three"
         android:title="@string/other_item"
         />
-
 </menu>

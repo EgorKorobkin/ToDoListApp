@@ -3,4 +3,6 @@
     <color name="colorPrimary">#6495ed</color>
     <color name="colorPrimaryDark">#6495ed</color>
     <color name="colorAccent">#6495ed</color>
+    <color name="indigo">#6495ed</color>
+    <color name="pink">#32cd32</color>
 </resources>
