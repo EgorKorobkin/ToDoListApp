@@ -12,7 +12,7 @@ import com.example.todolist.JavaToDO.OtherTask;
 import com.example.todolist.JavaToDO.Task;
 import com.example.todolist.R;
 
-import static com.example.todolist.JavaToDO.Task.itemsTask;
+import static com.example.todolist.JavaToDO.Task.itemsAllTask;
 
 public class ActivityOtherTask extends AppCompatActivity {
     EditText edit;
@@ -44,7 +44,7 @@ public class ActivityOtherTask extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.button_addTask:
                 Task task = new OtherTask(taskText);
-                itemsTask.add(task);
+                itemsAllTask.add(task);
                 finish();
                 return true;
             default:

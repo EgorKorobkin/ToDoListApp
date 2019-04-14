@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.example.todolist.JavaToDO.ImportantTask;
 import com.example.todolist.JavaToDO.Task;
 import com.example.todolist.R;
-import static com.example.todolist.JavaToDO.Task.itemsTask;
+import static com.example.todolist.JavaToDO.Task.itemsAllTask;
 
 public class ActivityImportantTask extends AppCompatActivity {
     EditText edit;
@@ -42,7 +42,7 @@ public class ActivityImportantTask extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.button_addTask:
                 Task task = new ImportantTask(taskText);
-                itemsTask.add(task);
+                itemsAllTask.add(task);
                 finish();
                 return true;
             default:

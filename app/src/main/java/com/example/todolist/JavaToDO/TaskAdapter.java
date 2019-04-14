@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
-
 import com.example.todolist.R;
+import android.graphics.Color;
 
-import static com.example.todolist.JavaToDO.Task.itemsTask;
+import static com.example.todolist.JavaToDO.Task.itemsAllTask;
 
 public class TaskAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
-    //public ArrayList<Task> taskItems;
 
     public TaskAdapter(Context context){
         this.context = context;
@@ -25,12 +25,12 @@ public class TaskAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return itemsTask.size();
+        return itemsAllTask.size();
     }
 
     @Override
     public Task getItem(int position) {
-        return itemsTask.get(position);
+        return itemsAllTask.get(position);
     }
 
     @Override
@@ -39,26 +39,30 @@ public class TaskAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.task_item_xml, null);
         }
 
-        Task task = itemsTask.get(position);
+        final Task task = itemsAllTask.get(position);
 
         //тест задачи
-        TextView taskTextView = (TextView) convertView.findViewById(R.id.taskTextView);
-        //taskTextView.setBackgroundColor(task.getColor());
-        //taskTextView.getBackground().setAlpha(80);
-
+        final TextView taskTextView = (TextView) convertView.findViewById(R.id.taskTextView);
         convertView.setBackgroundColor(task.getColor());//красит само поле
         convertView.getBackground().setAlpha(50);
         taskTextView.setText(task.getText());
+        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                task.setTaskDone();
+                taskTextView.setBackgroundColor(Color.BLACK);
+            }
+        });
         return convertView;
-
     }
-    public Task getTask(int position){
-        return ((Task)getItem(position));
+    public Task getTask(int position) {
+        return ((Task) getItem(position));
     }
 }
 //сортировать массив а затем вызвать метод адаптера setDataInvalidated

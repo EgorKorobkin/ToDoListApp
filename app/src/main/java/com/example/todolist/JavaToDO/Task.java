@@ -1,21 +1,18 @@
 package com.example.todolist.JavaToDO;
-
 import java.util.ArrayList;
 
-import static android.graphics.Color.BLACK;
-
 public abstract class Task {
-    public static ArrayList<Task> itemsTask = new ArrayList<Task>();
-//    public Task(){
-//        ImportantTask importantTask = new ImportantTask("new Task");
-//        itemsTask.add(importantTask);
-//    }
-    public String text ;
+    public static ArrayList<Task> itemsAllTask = new ArrayList<Task>();
+    private int Color;
+    private String text ;
+    public boolean taskDone;
 
     public abstract String getText();
 
     public void addTask(Task task){
-        itemsTask.add(task);
+        itemsAllTask.add(task);
     }
     public abstract int getColor();
+    public abstract boolean getTaskDone();
+    public abstract void setTaskDone();
 }

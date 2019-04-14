@@ -2,6 +2,8 @@ package com.example.todolist.JavaToDO;
 
 import android.graphics.Color;
 
+import java.io.IOException;
+
 public class OtherTask extends Task {
     private String text;
     private boolean taskDone;
@@ -15,10 +17,6 @@ public class OtherTask extends Task {
         return text;
     }
 
-    public void setTaskDone(boolean taskDone) {
-        this.taskDone = taskDone;
-    }
-
     public boolean getTask(){
         return taskDone;
     }
@@ -26,5 +24,14 @@ public class OtherTask extends Task {
     @Override
     public int getColor() {
         return Color.CYAN;
+    }
+
+    @Override
+    public boolean getTaskDone() {
+        return taskDone;
+    }
+    @Override
+    public void setTaskDone() {
+        taskDone = true;
     }
 }

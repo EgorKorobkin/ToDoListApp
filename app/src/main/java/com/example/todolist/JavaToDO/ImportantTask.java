@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public class ImportantTask extends Task {
     public String text;
-    private boolean taskDone;
+    public boolean taskDone;
     private int color = Color.RED;
 
     public ImportantTask(String text){
@@ -16,16 +16,18 @@ public class ImportantTask extends Task {
         return text;
     }
 
-    public void setTaskDone(boolean taskDone) {
-        this.taskDone = taskDone;
-    }
-
-    public boolean getTaskDone(){
-        return taskDone;
-    }
     @Override
     public int getColor(){
         return color;
+    }
+
+    @Override
+    public boolean getTaskDone() {
+        return taskDone;
+    }
+    @Override
+    public void setTaskDone(){
+        taskDone = true;
     }
 
 }

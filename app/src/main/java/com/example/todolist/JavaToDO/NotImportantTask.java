@@ -8,15 +8,11 @@ public class NotImportantTask extends Task {
 
     public NotImportantTask(String text){
         this.text = text;
-        taskDone = false; //задача не сделанная
+        taskDone = false; // false задача не сделанная
     }
 
     public String getText() {
         return text;
-    }
-
-    public void setTaskDone(boolean taskDone) {
-        this.taskDone = taskDone;
     }
 
     public boolean getTask(){
@@ -26,5 +22,15 @@ public class NotImportantTask extends Task {
     @Override
     public int getColor() {
         return Color.GREEN;
+    }
+
+    @Override
+    public boolean getTaskDone() {
+        return taskDone;
+    }
+
+    @Override
+    public void setTaskDone(){
+        taskDone = true;
     }
 }
