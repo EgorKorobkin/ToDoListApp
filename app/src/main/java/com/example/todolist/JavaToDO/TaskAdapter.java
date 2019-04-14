@@ -9,28 +9,34 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import com.example.todolist.R;
 import android.graphics.Color;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import static com.example.todolist.JavaToDO.Task.itemsAllTask;
+import static com.example.todolist.JavaToDO.Task.itemsTaskEnd;
+import static com.example.todolist.JavaToDO.Task.itemsUseTask;
 
 public class TaskAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
+    ArrayList<Task> taskAdapterList;
 
     public TaskAdapter(Context context){
         this.context = context;
-        //this.taskItems = taskItems;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        taskAdapterList = itemsAllTask;
     }
 
 
     @Override
     public int getCount() {
-        return itemsAllTask.size();
+        return taskAdapterList.size();
     }
 
     @Override
     public Task getItem(int position) {
-        return itemsAllTask.get(position);
+        return taskAdapterList.get(position);
     }
 
     @Override
@@ -44,7 +50,7 @@ public class TaskAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.task_item_xml, null);
         }
 
-        final Task task = itemsAllTask.get(position);
+        final Task task = taskAdapterList.get(position);
 
         //тест задачи
         final TextView taskTextView = (TextView) convertView.findViewById(R.id.taskTextView);
@@ -56,13 +62,38 @@ public class TaskAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 task.setTaskDone();
-                taskTextView.setBackgroundColor(Color.BLACK);
+                Toast.makeText(context,"Task end!",Toast.LENGTH_SHORT).show();
+                itemsTaskEnd.add(task);
             }
         });
         return convertView;
     }
     public Task getTask(int position) {
         return ((Task) getItem(position));
+    }
+    public void setListEndTask(){
+        itemsTaskEnd.clear();//уменьшает количетсво проблем просто очищать колекцию и заново добавлять
+        for(Task t : itemsAllTask){
+            if(t.getTaskDone()){
+                itemsTaskEnd.add(t);
+            }
+        }
+        taskAdapterList = itemsTaskEnd;
+        notifyDataSetInvalidated();
+    }
+    public void setListUseTask(){
+        itemsUseTask.clear();
+        for(Task t : itemsAllTask){
+            if(!t.getTaskDone()){
+                itemsUseTask.add(t);
+            }
+        }
+        taskAdapterList = itemsUseTask;
+        notifyDataSetInvalidated();
+    }
+    public void setListAllTask(){
+        taskAdapterList = itemsAllTask;
+        notifyDataSetInvalidated();
     }
 }
 //сортировать массив а затем вызвать метод адаптера setDataInvalidated

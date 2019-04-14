@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public abstract class Task {
     public static ArrayList<Task> itemsAllTask = new ArrayList<Task>();
+    public static ArrayList<Task> itemsTaskEnd = new ArrayList<>();
+    public static ArrayList<Task> itemsUseTask = new ArrayList<>();
     private int Color;
     private String text ;
     public boolean taskDone;

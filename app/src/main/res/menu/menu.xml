@@ -2,13 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/stats"
-        android:title="@string/stat_item"
+        android:id="@+id/allTask"
+        android:title="@string/all_task"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/about"
-        android:title="@string/about_item"
+        android:id="@+id/useTask"
+        android:title="@string/use_task"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/endTask"
+        android:title="@string/end_task"
         app:showAsAction="never"
         />
 

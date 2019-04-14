@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.stats :
-                Intent intent = new Intent(this, ActivityStatistics.class);
-                this.startActivity(intent);
+            case R.id.allTask :
+                taskAdapter.setListAllTask();
                 return true;
-            case R.id.about :
-                Intent intent2 = new Intent(this, ActivityAbout.class);
-                this.startActivity(intent2);
+            case R.id.useTask :
+                taskAdapter.setListUseTask();
+                return true;
+            case R.id.endTask :
+                taskAdapter.setListEndTask();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
