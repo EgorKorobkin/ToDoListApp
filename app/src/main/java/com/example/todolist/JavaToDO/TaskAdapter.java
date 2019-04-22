@@ -8,14 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.example.todolist.R;
-import android.graphics.Color;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
-import static com.example.todolist.JavaToDO.Task.itemsAllTask;
-import static com.example.todolist.JavaToDO.Task.itemsTaskEnd;
-import static com.example.todolist.JavaToDO.Task.itemsUseTask;
+import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
+import static com.example.todolist.DB_ToDO.TaskBase.itemsTaskEnd;
+import static com.example.todolist.DB_ToDO.TaskBase.itemsUseTask;
 
 public class TaskAdapter extends BaseAdapter {
     Context context;
@@ -57,7 +54,8 @@ public class TaskAdapter extends BaseAdapter {
         convertView.setBackgroundColor(task.getColor());//красит само поле
         convertView.getBackground().setAlpha(50);
         taskTextView.setText(task.getText());
-        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+        final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+        checkBox.setChecked(task.getTaskDone());
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +69,7 @@ public class TaskAdapter extends BaseAdapter {
     public Task getTask(int position) {
         return ((Task) getItem(position));
     }
+
     public void setListEndTask(){
         itemsTaskEnd.clear();//уменьшает количетсво проблем просто очищать колекцию и заново добавлять
         for(Task t : itemsAllTask){
@@ -96,4 +95,3 @@ public class TaskAdapter extends BaseAdapter {
         notifyDataSetInvalidated();
     }
 }
-//сортировать массив а затем вызвать метод адаптера setDataInvalidated

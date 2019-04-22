@@ -1,10 +1,8 @@
 package com.example.todolist.JavaToDO;
-import java.util.ArrayList;
+
+import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
 
 public abstract class Task {
-    public static ArrayList<Task> itemsAllTask = new ArrayList<Task>();
-    public static ArrayList<Task> itemsTaskEnd = new ArrayList<>();
-    public static ArrayList<Task> itemsUseTask = new ArrayList<>();
     private int Color;
     private String text ;
     public boolean taskDone;
@@ -16,5 +14,9 @@ public abstract class Task {
     }
     public abstract int getColor();
     public abstract boolean getTaskDone();
+    public int getTaskDoneInt(){
+        return -1;
+    }
+    public abstract int getNum();
     public abstract void setTaskDone();
 }

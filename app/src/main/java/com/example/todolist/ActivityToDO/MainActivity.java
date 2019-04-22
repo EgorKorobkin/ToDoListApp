@@ -1,6 +1,10 @@
 package com.example.todolist.ActivityToDO;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -10,22 +14,84 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.todolist.DB_ToDO.DataBaseTask;
+import com.example.todolist.DB_ToDO.TaskBase;
+import com.example.todolist.JavaToDO.ImportantTask;
+import com.example.todolist.JavaToDO.NotImportantTask;
+import com.example.todolist.JavaToDO.OtherTask;
+import com.example.todolist.JavaToDO.Task;
 import com.example.todolist.JavaToDO.TaskAdapter;
 import com.example.todolist.R;
 
+import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
+
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     TaskAdapter taskAdapter;
+    private SQLiteOpenHelper sqLiteOpenHelper;
+    private SQLiteDatabase db;
+    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        try {
+            TaskBase taskBase = new TaskBase(this);
+
+            sqLiteOpenHelper = new DataBaseTask(this);
+            db = sqLiteOpenHelper.getReadableDatabase();
+
+            cursor = db.query("TASK",new String[]{"TASK_TEXT","TASK_TYPE","VALUE_BOOLEAN"},
+                    null,null,null,null,null);
+
+            Toast toast2 = Toast.makeText(this, "i'm line 46", Toast.LENGTH_SHORT);
+            toast2.show();
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                Toast toast = Toast.makeText(this, "i'm cursor", Toast.LENGTH_SHORT);
+                toast.show();
+
+                String taskText = cursor.getString(0);
+                int typeTask = cursor.getInt(1);
+                int boolTask = cursor.getInt(2);
+
+                Task task;
+
+                if(typeTask==0) {
+                    task = new ImportantTask(taskText);
+                } else if (typeTask == 1){
+                    task = new NotImportantTask(taskText);
+                } else {
+                    task = new OtherTask(taskText);
+                }
+
+                if (boolTask == 0) {
+                    task.taskDone = true;
+                } else task.taskDone = false;
+
+                itemsAllTask.add(task);
+                cursor.moveToNext();
+            }
+
+            Toast toast = Toast.makeText(this,"i'm here",Toast.LENGTH_SHORT);
+            toast.show();
+
+        }catch (SQLiteException e){
+            Toast toast = Toast.makeText(this,"data base unavailable",Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
         Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         taskAdapter = new TaskAdapter(this);
         ListView lvMain = (ListView) findViewById(R.id.lvItems); //находим список
         lvMain.setAdapter(taskAdapter); //присваиваем адаптер списку
+        DataBaseTask dataBaseTask = new DataBaseTask(this);
+
     }
 
     @Override
@@ -85,5 +151,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             default:
                 return false;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cursor.close();
+        db.close();
     }
 }

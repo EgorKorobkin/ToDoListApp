@@ -8,11 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.todolist.DB_ToDO.TaskBase;
 import com.example.todolist.JavaToDO.NotImportantTask;
 import com.example.todolist.JavaToDO.Task;
 import com.example.todolist.R;
-
-import static com.example.todolist.JavaToDO.Task.itemsAllTask;
+import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
 
 public class ActivityNotImportantTask extends AppCompatActivity {
     EditText edit;
@@ -43,6 +43,7 @@ public class ActivityNotImportantTask extends AppCompatActivity {
             case R.id.button_addTask:
                 Task task = new NotImportantTask(taskText);
                 itemsAllTask.add(task);
+                TaskBase.newTask(task);
                 finish();
                 return true;
             default:

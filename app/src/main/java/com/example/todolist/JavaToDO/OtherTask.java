@@ -2,11 +2,10 @@ package com.example.todolist.JavaToDO;
 
 import android.graphics.Color;
 
-import java.io.IOException;
-
 public class OtherTask extends Task {
     private String text;
     private boolean taskDone;
+    private int color = Color.CYAN;
 
     public OtherTask(String text){
         this.text = text;
@@ -23,7 +22,7 @@ public class OtherTask extends Task {
 
     @Override
     public int getColor() {
-        return Color.CYAN;
+        return color;
     }
 
     @Override
@@ -37,5 +36,10 @@ public class OtherTask extends Task {
         } else {
             taskDone = true;
         }
+    }
+
+    @Override
+    public int getNum() {
+        return 2;
     }
 }

@@ -1,10 +1,9 @@
 package com.example.todolist.JavaToDO;
 
-import android.graphics.Color;
-
 public class NotImportantTask extends Task {
     private String text;
     private boolean taskDone;
+    private int color = android.graphics.Color.GREEN;
 
     public NotImportantTask(String text){
         this.text = text;
@@ -21,7 +20,7 @@ public class NotImportantTask extends Task {
 
     @Override
     public int getColor() {
-        return Color.GREEN;
+        return color;
     }
 
     @Override
@@ -36,5 +35,10 @@ public class NotImportantTask extends Task {
         } else {
             taskDone = true;
         }
+    }
+
+    @Override
+    public int getNum() {
+        return 1;
     }
 }

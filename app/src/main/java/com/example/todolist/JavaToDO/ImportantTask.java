@@ -3,8 +3,8 @@ package com.example.todolist.JavaToDO;
 import android.graphics.Color;
 
 public class ImportantTask extends Task {
-    public String text;
-    public boolean taskDone;
+    private String text;
+    private boolean taskDone;
     private int color = Color.RED;
 
     public ImportantTask(String text){
@@ -25,6 +25,12 @@ public class ImportantTask extends Task {
     public boolean getTaskDone() {
         return taskDone;
     }
+
+    @Override
+    public int getTaskDoneInt() {
+        if(taskDone) return 1; else return 0;
+    }
+
     @Override
     public void setTaskDone(){
         if (taskDone) {
@@ -34,4 +40,8 @@ public class ImportantTask extends Task {
         }
     }
 
+    @Override
+    public int getNum() {
+        return 0;
+    }
 }
