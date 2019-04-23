@@ -21,11 +21,18 @@ public class TaskBase {
     public static void newTask(Task task){
         database.insert("TASK",null,getContentValues(task));
     }
+    public void setCheckBoxInSql(Task task){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("VALUE_BOOLEAN",1);
+        database.update("TASK",contentValues,"TASK_TEXT = ?",new String[] {task.getText()});
+    }
+
 
     private static ContentValues getContentValues(Task task){
         ContentValues taskValues = new ContentValues();
         taskValues.put("TASK_TEXT",task.getText());
         taskValues.put("TASK_TYPE",task.getNum());
+        taskValues.put("VALUE_BOOLEAN",task.getTaskDoneInt());
 
 
         return taskValues;

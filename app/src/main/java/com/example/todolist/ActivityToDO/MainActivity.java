@@ -46,14 +46,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             cursor = db.query("TASK",new String[]{"TASK_TEXT","TASK_TYPE","VALUE_BOOLEAN"},
                     null,null,null,null,null);
 
-            Toast toast2 = Toast.makeText(this, "i'm line 46", Toast.LENGTH_SHORT);
-            toast2.show();
-
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-
-                Toast toast = Toast.makeText(this, "i'm cursor", Toast.LENGTH_SHORT);
-                toast.show();
 
                 String taskText = cursor.getString(0);
                 int typeTask = cursor.getInt(1);
@@ -70,15 +64,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 }
 
                 if (boolTask == 0) {
-                    task.taskDone = true;
-                } else task.taskDone = false;
+                    task.taskDone = false;
+                } else task.taskDone = true;
 
                 itemsAllTask.add(task);
                 cursor.moveToNext();
             }
-
-            Toast toast = Toast.makeText(this,"i'm here",Toast.LENGTH_SHORT);
-            toast.show();
 
         }catch (SQLiteException e){
             Toast toast = Toast.makeText(this,"data base unavailable",Toast.LENGTH_SHORT);

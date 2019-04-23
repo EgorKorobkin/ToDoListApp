@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.example.todolist.DB_ToDO.TaskBase;
 import com.example.todolist.R;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -62,6 +64,10 @@ public class TaskAdapter extends BaseAdapter {
                 task.setTaskDone();
                 Toast.makeText(context,"Task end!",Toast.LENGTH_SHORT).show();
                 itemsTaskEnd.add(task);
+                TaskBase taskBase = new TaskBase(context);
+                taskBase.setCheckBoxInSql(task);
+                Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
+
             }
         });
         return convertView;
