@@ -2,6 +2,7 @@ package com.example.todolist.JavaToDO;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -62,12 +63,24 @@ public class TaskAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 task.setTaskDone();
-                Toast.makeText(context,"Task end!",Toast.LENGTH_SHORT).show();
                 itemsTaskEnd.add(task);
                 TaskBase taskBase = new TaskBase(context);
-                taskBase.setCheckBoxInSql(task);
-                Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
-
+                if(task.getTaskDone()){
+                    taskBase.setOffCheckBoxInSql(task);
+                    Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
+                } else {
+                    taskBase.setCheckBoxInSql(task);
+                    Toast.makeText(context,"Task off in sql!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View view) {
+                TaskBase taskBase = new TaskBase(context);
+                itemsAllTask.remove(task);
+                taskBase.removeTaskInSql(task);
+                notifyDataSetInvalidated();
+                return true;
             }
         });
         return convertView;

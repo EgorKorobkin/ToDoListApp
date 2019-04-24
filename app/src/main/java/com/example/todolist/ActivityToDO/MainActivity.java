@@ -62,10 +62,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 } else {
                     task = new OtherTask(taskText);
                 }
-
-                if (boolTask == 0) {
-                    task.taskDone = false;
-                } else task.taskDone = true;
+                if(boolTask!=0) task.setTaskDone();
 
                 itemsAllTask.add(task);
                 cursor.moveToNext();
@@ -81,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         taskAdapter = new TaskAdapter(this);
         ListView lvMain = (ListView) findViewById(R.id.lvItems); //находим список
         lvMain.setAdapter(taskAdapter); //присваиваем адаптер списку
-        DataBaseTask dataBaseTask = new DataBaseTask(this);
+        //DataBaseTask dataBaseTask = new DataBaseTask(this);
 
     }
 

@@ -3,6 +3,8 @@ package com.example.todolist.DB_ToDO;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.todolist.JavaToDO.NotImportantTask;
 import com.example.todolist.JavaToDO.Task;
 
 import java.util.ArrayList;
@@ -26,6 +28,14 @@ public class TaskBase {
         contentValues.put("VALUE_BOOLEAN",1);
         database.update("TASK",contentValues,"TASK_TEXT = ?",new String[] {task.getText()});
     }
+    public void setOffCheckBoxInSql(Task task){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("VALUE_BOOLEAN",0);
+        database.update("TASK",contentValues,"TASK_TEXT = ?",new String[] {task.getText()});
+    }
+    public void removeTaskInSql(Task task){
+        database.delete("TASK","TASK_TEXT = ?",new String[] {task.getText()});
+    }
 
 
     private static ContentValues getContentValues(Task task){
@@ -34,8 +44,8 @@ public class TaskBase {
         taskValues.put("TASK_TYPE",task.getNum());
         taskValues.put("VALUE_BOOLEAN",task.getTaskDoneInt());
 
-
         return taskValues;
     }
+
 
 }
