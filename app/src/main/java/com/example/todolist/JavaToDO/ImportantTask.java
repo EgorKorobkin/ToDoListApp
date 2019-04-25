@@ -33,11 +33,11 @@ public class ImportantTask extends Task {
 
     @Override
     public void setTaskDone(){
-        if (taskDone) {
-             taskDone = false;
-        } else {
-            taskDone = true;
-        }
+        taskDone = true;
+    }
+    @Override
+    public void setTaskUse() {
+        taskDone = false;
     }
 
     @Override

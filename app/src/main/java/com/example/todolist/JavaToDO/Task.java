@@ -19,4 +19,5 @@ public abstract class Task {
     }
     public abstract int getNum();
     public abstract void setTaskDone();
+    public abstract void setTaskUse();
 }

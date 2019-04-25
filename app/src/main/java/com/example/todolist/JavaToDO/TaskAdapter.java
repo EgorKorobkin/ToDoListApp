@@ -62,15 +62,20 @@ public class TaskAdapter extends BaseAdapter {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                task.setTaskDone();
-                itemsTaskEnd.add(task);
                 TaskBase taskBase = new TaskBase(context);
                 if(task.getTaskDone()){
                     taskBase.setOffCheckBoxInSql(task);
-                    Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
-                } else {
-                    taskBase.setCheckBoxInSql(task);
+                    task.setTaskUse();
                     Toast.makeText(context,"Task off in sql!",Toast.LENGTH_SHORT).show();
+
+                    notifyDataSetInvalidated();
+                } else if(!task.getTaskDone()) {
+                    task.setTaskDone();
+                    itemsTaskEnd.add(task);
+                    taskBase.setCheckBoxInSql(task);
+                    Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
+
+                    notifyDataSetInvalidated();
                 }
             }
         });

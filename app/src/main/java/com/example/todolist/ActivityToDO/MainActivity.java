@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 int typeTask = cursor.getInt(1);
                 int boolTask = cursor.getInt(2);
 
+                System.out.println(taskText+" "+typeTask+" "+boolTask);
+
                 Task task;
 
                 if(typeTask==0) {
@@ -62,7 +64,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 } else {
                     task = new OtherTask(taskText);
                 }
-                if(boolTask!=0) task.setTaskDone();
+
+                if(boolTask==0){
+                    task.setTaskUse();
+                }else {
+                    task.setTaskDone();
+                    System.out.println("считана сделанная задача");
+                }
 
                 itemsAllTask.add(task);
                 cursor.moveToNext();
@@ -78,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         taskAdapter = new TaskAdapter(this);
         ListView lvMain = (ListView) findViewById(R.id.lvItems); //находим список
         lvMain.setAdapter(taskAdapter); //присваиваем адаптер списку
-        //DataBaseTask dataBaseTask = new DataBaseTask(this);
 
     }
 

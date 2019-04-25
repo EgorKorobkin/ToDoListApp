@@ -18,7 +18,7 @@ public class DataBaseTask extends SQLiteOpenHelper {
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "TASK_TEXT TEXT, "
                 + "TASK_TYPE INTEGER, "
-                + "VALUE_BOOLEAN INTEGER DEFAULT 0);");
+                + "VALUE_BOOLEAN INTEGER);");
     }
 
     @Override
