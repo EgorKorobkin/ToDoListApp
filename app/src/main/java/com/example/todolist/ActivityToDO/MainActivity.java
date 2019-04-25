@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     task = new OtherTask(taskText);
                 }
 
-                if(boolTask==0){
-                    task.setTaskUse();
-                }else {
+                if(boolTask==1){
                     task.setTaskDone();
                     System.out.println("считана сделанная задача");
+                }else {
+                    task.setTaskUse();
                 }
 
                 itemsAllTask.add(task);
