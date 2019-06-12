@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">ToDoList</string>
     <string name="ent_new_item">Enter a new item</string>
-    <string name="add_item">Add Item</string>
-    <string name="all_task">All Task</string>
-    <string name="use_task">Use Task</string>
-    <string name="end_task">End Task</string>
+    <string name="add_item">Добавить</string>
+    <string name="all_task">Все Задачи</string>
+    <string name="use_task">Используемые</string>
+    <string name="end_task">Завершенные</string>
     <string name="about_about">Содержит описание приложения!</string>
-    <string name="important_item">Important task</string>
-    <string name="not_important_item">Not important task</string>
-    <string name="other_item">Other task</string>
-    <string name="add_task">Add Task</string>
-    <string name="task_add_activity_write_task">Write Task</string>
-    <string name="task_add_Activity_writeTask">Add Task</string>
-    <string name="menu_title">Menu</string>
+    <string name="important_item">Важная задача</string>
+    <string name="not_important_item">Не важная задача</string>
+    <string name="other_item">Другие задачи</string>
+    <string name="add_task">Добавить</string>
+    <string name="task_add_activity_write_task">Напишите задачу</string>
+    <string name="task_add_Activity_writeTask">Напишите задачу</string>
+    <string name="menu_title">Меню</string>
 
 </resources>

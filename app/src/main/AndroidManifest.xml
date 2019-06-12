@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityToDO.MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"> <!-- отключил поворот экрана -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,25 +20,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityToDO.ActivityStatistics"
-            android:label="Statistics"
-            android:parentActivityName=".ActivityToDO.MainActivity" />
-        <activity
-            android:name=".ActivityToDO.ActivityAbout"
-            android:label="About"
-            android:parentActivityName=".ActivityToDO.MainActivity" />
-        <activity
-            android:name=".ActivityToDO.ActivityImportantTask"
+            android:name=".activity.ActivityImportantTask"
             android:label="ImportantTask"
-            android:parentActivityName=".ActivityToDO.MainActivity" />
+            android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".ActivityToDO.ActivityNotImportantTask"
+            android:name=".activity.ActivityNotImportantTask"
             android:label="NotImportantTask"
-            android:parentActivityName=".ActivityToDO.MainActivity" />
+            android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".ActivityToDO.ActivityOtherTask"
+            android:name=".activity.ActivityOtherTask"
             android:label="OtherTask"
-            android:parentActivityName=".ActivityToDO.MainActivity" />
+            android:parentActivityName=".activity.MainActivity" />
     </application>
 
 </manifest>

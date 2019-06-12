@@ -1,21 +1,19 @@
-package com.example.todolist.JavaToDO;
+package com.example.todolist.java;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.todolist.DB_ToDO.TaskBase;
+import com.example.todolist.db.TaskBase;
 import com.example.todolist.R;
-import android.widget.Toast;
 import java.util.ArrayList;
-import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
-import static com.example.todolist.DB_ToDO.TaskBase.itemsTaskEnd;
-import static com.example.todolist.DB_ToDO.TaskBase.itemsUseTask;
+import static com.example.todolist.db.TaskBase.itemsAllTask;
+import static com.example.todolist.db.TaskBase.itemsTaskEnd;
+import static com.example.todolist.db.TaskBase.itemsUseTask;
 
 public class TaskAdapter extends BaseAdapter {
     Context context;
@@ -66,14 +64,14 @@ public class TaskAdapter extends BaseAdapter {
                 if(task.getTaskDone()){
                     taskBase.setOffCheckBoxInSql(task);
                     task.setTaskUse();
-                    Toast.makeText(context,"Task off in sql!",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context,"Task off in sql!",Toast.LENGTH_SHORT).show();
 
                     notifyDataSetInvalidated();
                 } else if(!task.getTaskDone()) {
                     task.setTaskDone();
                     itemsTaskEnd.add(task);
                     taskBase.setCheckBoxInSql(task);
-                    Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context,"Task end in sql!",Toast.LENGTH_SHORT).show();
 
                     notifyDataSetInvalidated();
                 }

@@ -1,4 +1,4 @@
-package com.example.todolist.JavaToDO;
+package com.example.todolist.java;
 
 public class NotImportantTask extends Task {
     private String text;

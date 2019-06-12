@@ -1,9 +1,9 @@
-package com.example.todolist.DB_ToDO;
+package com.example.todolist.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.todolist.JavaToDO.Task;
+import com.example.todolist.java.Task;
 import java.util.ArrayList;
 
 public class TaskBase {
@@ -23,13 +23,13 @@ public class TaskBase {
     public void setCheckBoxInSql(Task task){
         ContentValues contentValues = new ContentValues();
         contentValues.put("VALUE_BOOLEAN",1);
-        System.out.println("#######################   Метод setCheckBoxInSql     #############################");
+        //System.out.println("#######################   Метод setCheckBoxInSql     #############################");
         database.update("TASK",contentValues,"TASK_TEXT = ?",new String[] {task.getText()});
     }
     public void setOffCheckBoxInSql(Task task){
         ContentValues contentValues = new ContentValues();
         contentValues.put("VALUE_BOOLEAN",0);
-        System.out.println("#######################   Метод setOffCheckBoxInSql     #############################");
+        //System.out.println("#######################   Метод setOffCheckBoxInSql     #############################");
         database.update("TASK",contentValues,"TASK_TEXT = ?",new String[] {task.getText()});
     }
     public void removeTaskInSql(Task task){

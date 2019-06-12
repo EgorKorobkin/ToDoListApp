@@ -1,6 +1,6 @@
-package com.example.todolist.JavaToDO;
+package com.example.todolist.java;
 
-import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
+import static com.example.todolist.db.TaskBase.itemsAllTask;
 
 public abstract class Task {
     private int Color;

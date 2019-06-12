@@ -1,4 +1,4 @@
-package com.example.todolist.ActivityToDO;
+package com.example.todolist.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.example.todolist.DB_ToDO.TaskBase;
-import com.example.todolist.JavaToDO.NotImportantTask;
-import com.example.todolist.JavaToDO.Task;
+import com.example.todolist.db.TaskBase;
+import com.example.todolist.java.NotImportantTask;
+import com.example.todolist.java.Task;
 import com.example.todolist.R;
-import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
+import static com.example.todolist.db.TaskBase.itemsAllTask;
 
 public class ActivityNotImportantTask extends AppCompatActivity {
     EditText edit;

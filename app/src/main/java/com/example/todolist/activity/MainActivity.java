@@ -1,4 +1,4 @@
-package com.example.todolist.ActivityToDO;
+package com.example.todolist.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,16 +15,16 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.todolist.DB_ToDO.DataBaseTask;
-import com.example.todolist.DB_ToDO.TaskBase;
-import com.example.todolist.JavaToDO.ImportantTask;
-import com.example.todolist.JavaToDO.NotImportantTask;
-import com.example.todolist.JavaToDO.OtherTask;
-import com.example.todolist.JavaToDO.Task;
-import com.example.todolist.JavaToDO.TaskAdapter;
+import com.example.todolist.db.DataBaseTask;
+import com.example.todolist.db.TaskBase;
+import com.example.todolist.java.ImportantTask;
+import com.example.todolist.java.NotImportantTask;
+import com.example.todolist.java.OtherTask;
+import com.example.todolist.java.Task;
+import com.example.todolist.java.TaskAdapter;
 import com.example.todolist.R;
 
-import static com.example.todolist.DB_ToDO.TaskBase.itemsAllTask;
+import static com.example.todolist.db.TaskBase.itemsAllTask;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     TaskAdapter taskAdapter;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
                 if(boolTask==1){
                     task.setTaskDone();
-                    System.out.println("считана сделанная задача");
+                    //System.out.println("считана сделанная задача");
                 }else {
                     task.setTaskUse();
                 }
